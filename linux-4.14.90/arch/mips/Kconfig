@@ -1009,6 +1009,33 @@ config MIPS_PARAVIRT
 	help
 	  This option supports guest running under ????
 
+config SIFLOWER
+	bool "MIPS Siflower SOC"
+	select BOOT_ELF32
+	select BOOT_RAW
+	select CEVT_R4K
+	select CLKSRC_MIPS_GIC
+	select COMMON_CLK
+	select CSRC_R4K
+	select DMA_NONCOHERENT
+	select GPIOLIB
+	select IRQ_MIPS_CPU
+	select LIBFDT
+	select MFD_SYSCON
+	select MIPS_CPU_SCACHE
+	select MIPS_GIC
+	select PINCTRL
+	select REGULATOR
+	select SYS_HAS_CPU_MIPS32_R2
+	select SYS_SUPPORTS_32BIT_KERNEL
+	select SYS_SUPPORTS_LITTLE_ENDIAN
+	select SYS_SUPPORTS_MIPS_CPS
+	select SYS_SUPPORTS_MULTITHREADING
+	select USE_OF
+	select SYS_SUPPORTS_ZBOOT
+	help
+	  This enables support for the MIPS Technologies SiFlower platform.
+
 endchoice
 
 source "arch/mips/alchemy/Kconfig"
@@ -1036,6 +1063,7 @@ source "arch/mips/loongson64/Kconfig"
 source "arch/mips/netlogic/Kconfig"
 source "arch/mips/paravirt/Kconfig"
 source "arch/mips/xilfpga/Kconfig"
+source "arch/mips/siflower/Kconfig"
 
 endmenu
 
