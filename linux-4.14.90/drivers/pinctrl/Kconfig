@@ -31,6 +31,11 @@ config DEBUG_PINCTRL
 	help
 	  Say Y here to add some extra checks and diagnostics to PINCTRL calls.
 
+config PINCTRL_SFAX8
+	bool
+	select PINMUX
+	select PINCONF
+
 config PINCTRL_ADI2
 	bool "ADI pin controller driver"
 	depends on (BF54x || BF60x)

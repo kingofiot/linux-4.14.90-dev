@@ -145,12 +145,12 @@
 	};
 
 	grfcom: syscon@19e00000 {
-		compatible = "siflower,sfax8-syscon";
+		compatible = "siflower,sfax8-syscon","syscon";
 		reg = <0x19e00000 0x30000>;
 	};
 
 	grfgpio: syscon@19e3f000 {
-		compatible = "siflower,sfax8-syscon";
+		compatible = "siflower,sfax8-syscon","syscon";
 		reg = <0x19e3f000 0x1000>;
 	};
 
@@ -457,6 +457,7 @@
 		reg = <0x1bdc0000 0x20000>;
 		interrupt-controller;
 		#interrupt-cells = <3>;
+		mti,reserved-ipi-vectors = <0 8>;
 
 		timer {
 			compatible = "mti,gic-timer";
@@ -716,6 +717,7 @@
 		clocks = <&pbusclk 0>;
 		sfgrf = <&grfcom>;
 
+		interrupt-parent = <&gic>;
 		interrupts = <GIC_SHARED 223 IRQ_TYPE_LEVEL_HIGH>;
 
 		//use-dma;
@@ -921,16 +923,17 @@
 		compatible = "siflower,sfax8-pinctrl";
 		#address-cells = <1>;
 		#size-cells = <1>;
+		interrupt-parent = <&gic>;
 		ranges;
 		pad-base = <&grfgpio>;
 
 		gpio: gpio@19d00000 {
 			compatible = "siflower,sfax8-gpio";
 			reg=<0x19d00000 0x100000>;
-			interrupts = <GIC_SHARED 246 IRQ_TYPE_LEVEL_HIGH>,
-				     <GIC_SHARED 247 IRQ_TYPE_LEVEL_HIGH>,
-				     <GIC_SHARED 248 IRQ_TYPE_LEVEL_HIGH>,
-				     <GIC_SHARED 249 IRQ_TYPE_LEVEL_HIGH>;
+			interrupts = <GIC_SHARED 246 IRQ_TYPE_NONE>,
+				     <GIC_SHARED 247 IRQ_TYPE_NONE>,
+				     <GIC_SHARED 248 IRQ_TYPE_NONE>,
+				     <GIC_SHARED 249 IRQ_TYPE_NONE>;
 			clocks = <&pbusclk 0>;
 
 			gpio-controller;

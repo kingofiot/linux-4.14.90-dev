@@ -1016,9 +1016,11 @@ static int spi_transfer_one_message(struct spi_controller *ctlr,
 	bool keep_cs = false;
 	int ret = 0;
 	unsigned long long ms = 1;
+	int tries = 5;
 	struct spi_statistics *statm = &ctlr->statistics;
 	struct spi_statistics *stats = &msg->spi->statistics;
 
+retry:
 	spi_set_cs(msg->spi, true);
 
 	SPI_STATISTICS_INCREMENT_FIELD(statm, messages);
@@ -1108,8 +1110,19 @@ out:
 	if (msg->status == -EINPROGRESS)
 		msg->status = ret;
 
-	if (msg->status && ctlr->handle_err)
+	/*
+ 	 * If we got a transfer TIMEDOUT, try to re-transfer this
+	 * message for a max of 5 times. This is OK for nor-flash
+	 * writes because the data is exactly the same.
+	 */
+	if (msg->status && ctlr->handle_err && tries) {
+		tries--;
+		msg->actual_length = 0;
+		msg->status = -EINPROGRESS;
+		ms = 1;
 		ctlr->handle_err(ctlr, msg);
+		goto retry;
+	}
 
 	spi_res_release(ctlr, msg);
 

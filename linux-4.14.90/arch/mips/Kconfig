@@ -1019,12 +1019,16 @@ config SIFLOWER
 	select CSRC_R4K
 	select DMA_NONCOHERENT
 	select GPIOLIB
+	select ARCH_WANT_OPTIONAL_GPIOLIB
+	select ARCH_REQUIRE_GPIOLIB
 	select IRQ_MIPS_CPU
 	select LIBFDT
 	select MFD_SYSCON
 	select MIPS_CPU_SCACHE
 	select MIPS_GIC
 	select PINCTRL
+	select GENERIC_PINCONF
+	select PINCTRL_SFAX8
 	select REGULATOR
 	select SYS_HAS_CPU_MIPS32_R2
 	select SYS_SUPPORTS_32BIT_KERNEL
@@ -1033,6 +1037,7 @@ config SIFLOWER
 	select SYS_SUPPORTS_MULTITHREADING
 	select USE_OF
 	select SYS_SUPPORTS_ZBOOT
+	select MFD_SYSCON
 	help
 	  This enables support for the MIPS Technologies SiFlower platform.
 

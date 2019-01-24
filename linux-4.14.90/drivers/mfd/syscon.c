@@ -36,6 +36,11 @@ struct syscon {
 	struct list_head list;
 };
 
+//#static const struct of_device_id of_syscon_match[] = {
+//#	{ .compatible = "syscon", },
+//#	{ .compatible = "siflower,sfax8-syscon", },
+//#};
+
 static const struct regmap_config syscon_regmap_config = {
 	.reg_bits = 32,
 	.val_bits = 32,
@@ -241,6 +246,8 @@ static const struct platform_device_id syscon_ids[] = {
 static struct platform_driver syscon_driver = {
 	.driver = {
 		.name = "syscon",
+		//.owner = THIS_MODULE,
+		//.of_match_table = of_syscon_match,
 	},
 	.probe		= syscon_probe,
 	.id_table	= syscon_ids,

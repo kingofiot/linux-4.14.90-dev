@@ -184,6 +184,7 @@ static const struct nand_manufacturer nand_manufacturers[] = {
 	{NAND_MFR_SANDISK, "SanDisk"},
 	{NAND_MFR_INTEL, "Intel"},
 	{NAND_MFR_ATO, "ATO"},
+	{NAND_MFR_GIGADEVICE, "Gigadevice"},
 	{NAND_MFR_WINBOND, "Winbond"},
 };
 

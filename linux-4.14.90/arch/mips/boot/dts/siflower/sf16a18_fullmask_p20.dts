@@ -185,7 +185,7 @@
 	#address-cells = <1>;
 	#size-cells = <0>;
 
-	w25q128@0 {
+	spiflash:w25q128@0 {
 		compatible = "w25q128";
 		reg = <0>;	/* chip select */
 		spi-max-frequency = <33000000>;
