@@ -1,5 +1,5 @@
 /*
- * Pistachio IRQ setup
+ * Siflower IRQ setup
  *
  * Copyright (C) 2014 Google, Inc.
  *
@@ -8,11 +8,11 @@
  * version 2, as published by the Free Software Foundation.
  */
 
-#ifndef __ASM_MACH_PISTACHIO_IRQ_H
-#define __ASM_MACH_PISTACHIO_IRQ_H
+#ifndef __ASM_MACH_SIFLOWER_IRQ_H
+#define __ASM_MACH_SIFLOWER_IRQ_H
 
 #define NR_IRQS 256
 
 #include_next <irq.h>
 
-#endif /* __ASM_MACH_PISTACHIO_IRQ_H */
+#endif /* __ASM_MACH_SIFLOWER_IRQ_H */
